@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documents</title>
+</head>
+<body>
+	{% if request.user.is_staff %}
+		{% for doc in doc %}
+			{{doc.first_name}}
+			{{doc.last_name}}
+			{{doc.pass_id}}
+			{{doc.phone_number}}
+			<br>
+		{% endfor %}
+	{% endif %}
+	<form method="post">
+		{% csrf_token %}
+		{{ create.as_p }}
+		<button type="submit">Отослать данные</button>
+	</form>
+</body>
+</html>
